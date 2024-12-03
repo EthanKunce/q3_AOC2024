@@ -1,7 +1,7 @@
 /*
  * Author:		Ethan Kunce
  * Date:		03 December 2024
- * ProgramName:	MullItOver
+ * ProgramName:	MullItOver2
  * Desc:		Boiler Plate Text
  */
 
@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MullItOver {
+public class MullItOver2 {
     
     public static void main(String [] args) throws FileNotFoundException
     {
@@ -31,11 +31,12 @@ public class MullItOver {
         // System.out.println(aggregatedText.toString());
         while(mullMatcher.find())
         {
-            System.out.println(mullMatcher.group()); // for some reason group() returned all matches concatenated together
-            String temp = mullMatcher.group();
+            System.out.println(mullMatcher.group());    //prints the match found from the nullMatcher.find() call. 
+            String temp = mullMatcher.group();          // calling multiple times still finds the same match from find() call
 
             int lhsOperand = Integer.parseInt(temp.substring(4, temp.indexOf(",")));
             int rhsOperand = Integer.parseInt(temp.substring(temp.indexOf(",")+1, temp.length()-1));
+            // plus 1 is added to the first argument because its inclusive while the second is exclusive, so 1 is subtracted for that arguement
             sum += lhsOperand * rhsOperand;
         }
 
