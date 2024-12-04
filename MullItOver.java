@@ -26,7 +26,7 @@ public class MullItOver {
         {
             aggregatedText.append(fileReader.nextLine());
         }
-        Pattern mullPattern = Pattern.compile("mul\\(\\d{1,3},\\d{1,3}\\)|do\\(\\)|don't\\(\\)", Pattern.MULTILINE );
+        Pattern mullPattern = Pattern.compile("mul\\(\\d{1,3},\\d{1,3}\\)", Pattern.MULTILINE );
         Matcher mullMatcher = mullPattern.matcher(aggregatedText);
         // System.out.println(aggregatedText.toString());
         while(mullMatcher.find())
