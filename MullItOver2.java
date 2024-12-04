@@ -19,6 +19,7 @@ public class MullItOver2 {
         StringBuilder aggregatedText = new StringBuilder();
         Scanner fileReader = new Scanner(new File("input.txt"));
         int sum = 0;
+        boolean mode = true;
 
         System.out.println();
         
@@ -33,11 +34,21 @@ public class MullItOver2 {
         {
             System.out.println(mullMatcher.group());    //prints the match found from the nullMatcher.find() call. 
             String temp = mullMatcher.group();          // calling multiple times still finds the same match from find() call
-
-            int lhsOperand = Integer.parseInt(temp.substring(4, temp.indexOf(",")));
-            int rhsOperand = Integer.parseInt(temp.substring(temp.indexOf(",")+1, temp.length()-1));
+            if(temp.equals("do()"))
+            {
+                mode = true;
+            }
+            else if(temp.equals("don't()"))
+            {
+                mode = false;
+            }
+            else if(mode)
+            {
+                int lhsOperand = Integer.parseInt(temp.substring(4, temp.indexOf(",")));
+                int rhsOperand = Integer.parseInt(temp.substring(temp.indexOf(",")+1, temp.length()-1));
+                sum += lhsOperand * rhsOperand;
+            }
             // plus 1 is added to the first argument because its inclusive while the second is exclusive, so 1 is subtracted for that arguement
-            sum += lhsOperand * rhsOperand;
         }
 
         System.out.println(sum);
